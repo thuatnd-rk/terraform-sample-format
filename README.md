@@ -15,11 +15,7 @@ The infrastructure consists of the following components:
 
 ### Compute Layer
 - EC2 instances running in private subnets
-- Docker containers for:
-  - CAgent Backend
-  - CAgent Frontend
-  - Chat History
-  - Redis Cache
+- Docker containers
 
 ### AI/ML Components
 - AWS Bedrock with Claude 3.7 Sonnet integration
