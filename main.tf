@@ -5,16 +5,16 @@ terraform {
 # Define local variables for the project
 # This section defines local variables that are used throughout the Terraform configuration.
 locals {
-  project_name = "cagent-vib"
-  environment  = "prod"
+  project_name = "terraform-example"
+  environment  = "dev"
   
   # General tags
   common_tags = {
     Project     = local.project_name
     Environment = local.environment
-    Terraform   = "True"
-    Owner       = "CTS-DevOps-Team"
-    ManagedBy   = "Terraform"
+    Terraform   = "true"
+    Owner       = "ndthuat"
+    ManagedBy   = "terraform"
     CreatedAt   = timestamp()
   }
   
@@ -63,9 +63,9 @@ module "ec2" {
     tags = merge(var.ec2_instance_config.tags, local.common_tags)
   })
   ami_id                    = module.ami.ubuntu_ami_id
-  iam_instance_profile      = module.iam.cagent_server_role_name
+  iam_instance_profile      = module.iam.example_server_role_name
   subnets                   = module.vpc.private_subnets[0]
-  security_group_ids        = module.sg.cagent_server_sg_id
+  security_group_ids        = module.sg.example_server_sg_id
   depends_on                = [module.sg, module.iam, module.vpc]
 }
 

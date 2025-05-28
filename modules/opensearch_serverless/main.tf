@@ -1,7 +1,7 @@
 data "aws_caller_identity" "current" {}
 
 # Create OpenSearch Serverless Collection
-resource "aws_opensearchserverless_collection" "cagent-collection" {
+resource "aws_opensearchserverless_collection" "example-collection" {
   name = var.opensearch_collection_name
   standby_replicas = "DISABLED"
   type = "VECTORSEARCH"
@@ -78,13 +78,13 @@ resource "aws_opensearchserverless_access_policy" "data_access_policy" {
   ])
 
   depends_on = [
-    aws_opensearchserverless_collection.cagent-collection,
+    aws_opensearchserverless_collection.example-collection,
     var.bedrock_knowledge_base_role_arn
   ]
 }
 
 # Create OpenSearch Index
-resource "opensearch_index" "cagent_index" {
+resource "opensearch_index" "example_index" {
   provider                       = opensearch.signed
   name                           = var.opensearch_index_config.name
   number_of_shards               = var.opensearch_index_config.number_of_shards
@@ -95,7 +95,7 @@ resource "opensearch_index" "cagent_index" {
   mappings                       = var.opensearch_index_config.mappings
 
   depends_on = [
-    aws_opensearchserverless_collection.cagent-collection,
+    aws_opensearchserverless_collection.example-collection,
     null_resource.wait_for_policy_sync
   ]
   

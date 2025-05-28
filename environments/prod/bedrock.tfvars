@@ -7,7 +7,7 @@ knowledge_base_config = {
 }
 
 data_source_config = {
-  name       = "cagent-data-source"
+  name       = "example-data-source"
 }
 
 parsing_configuration = {

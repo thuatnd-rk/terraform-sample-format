@@ -1,5 +1,5 @@
-# EC2 Instance Profile (CAgent Server Role)
-resource "aws_iam_role" "cagent_server_role" {
+# EC2 Instance Profile (example Server Role)
+resource "aws_iam_role" "example_server_role" {
   name = var.iam_config.ec2_access.role_name
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
@@ -13,28 +13,28 @@ resource "aws_iam_role" "cagent_server_role" {
 }
 
 resource "aws_iam_role_policy_attachment" "attach_ssm_policy" {
-  role       = aws_iam_role.cagent_server_role.name
+  role       = aws_iam_role.example_server_role.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
 }
 
 resource "aws_iam_role_policy_attachment" "attach_bedrock_policy" {
-  role       = aws_iam_role.cagent_server_role.name
+  role       = aws_iam_role.example_server_role.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonBedrockFullAccess"
 }
 
 resource "aws_iam_role_policy_attachment" "attach_s3_policy" {
-  role       = aws_iam_role.cagent_server_role.name
+  role       = aws_iam_role.example_server_role.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonS3FullAccess"
 }
 
-resource "aws_iam_instance_profile" "cagent_server_profile" {
+resource "aws_iam_instance_profile" "example_server_profile" {
   name = var.iam_config.ec2_access.instance_profile
-  role = aws_iam_role.cagent_server_role.name
+  role = aws_iam_role.example_server_role.name
 }
 
 resource "aws_iam_role_policy" "server_opensearch_policy" {
   name = "OSSPolicy"
-  role = aws_iam_role.cagent_server_role.id
+  role = aws_iam_role.example_server_role.id
 
   policy = jsonencode({
     Version = "2012-10-17",
@@ -49,7 +49,7 @@ resource "aws_iam_role_policy" "server_opensearch_policy" {
 
 resource "aws_iam_role_policy" "bedrock_knowledge_base_passrole_policy" {
   name = "BedrockAgentPassRolePolicy"
-  role = aws_iam_role.cagent_server_role.id
+  role = aws_iam_role.example_server_role.id
 
   policy = jsonencode({
     Version = "2012-10-17",

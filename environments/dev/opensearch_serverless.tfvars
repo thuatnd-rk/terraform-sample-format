@@ -1,7 +1,7 @@
-opensearch_collection_name = "vib-cagent"
+opensearch_collection_name = "user-cagent"
 
 opensearch_index_config = {
-  name                           = "vib-cagent-index"
+  name                           = "user-cagent-index"
   number_of_shards               = "2"
   number_of_replicas             = "0"
   index_knn                      = true

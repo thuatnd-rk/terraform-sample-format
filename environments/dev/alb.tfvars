@@ -26,7 +26,7 @@ alb_config = {
           priority = 1
           conditions = [{
             host_header = {
-              values = ["s3-explorer.vib-domain"]
+              values = ["s3-explorer.user-domain"]
             }
           }]
           actions = [{
@@ -38,7 +38,7 @@ alb_config = {
           priority = 2
           conditions = [{
             host_header = {
-              values = ["cagent.vib-domain"]
+              values = ["cagent.user-domain"]
             }
           }]
           actions = [{

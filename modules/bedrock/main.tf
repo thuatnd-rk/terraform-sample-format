@@ -1,4 +1,4 @@
-resource "aws_bedrockagent_knowledge_base" "cagent-knowledge-base" {
+resource "aws_bedrockagent_knowledge_base" "example-knowledge-base" {
   # This resource creates a knowledge base for Bedrock.
   name     = var.knowledge_base_config.name
   role_arn = var.knowledge_base_config.bedrock_knowledge_base_role_arn
@@ -28,7 +28,7 @@ resource "aws_bedrockagent_knowledge_base" "cagent-knowledge-base" {
 }
 
 resource "aws_bedrockagent_data_source" "data-source" {
-  knowledge_base_id = aws_bedrockagent_knowledge_base.cagent-knowledge-base.id
+  knowledge_base_id = aws_bedrockagent_knowledge_base.example-knowledge-base.id
   name              = var.data_source_config.name
 
   data_source_configuration {

@@ -1,5 +1,5 @@
 resource "aws_security_group" "alb_sg" {
-  name        = "cagent_alb_sg"
+  name        = "example_alb_sg"
   description = "Security group for ALB"
   vpc_id      = var.vpc_id
 
@@ -31,13 +31,13 @@ resource "aws_security_group" "alb_sg" {
   }
 
   tags = {
-    Name = "cagent_alb_sg"
+    Name = "example_alb_sg"
   }
 }
 
-resource "aws_security_group" "cagent_server_sg" {
-  name        = "cagent_server_sg"
-  description = "Security group for cagent server"
+resource "aws_security_group" "example_server_sg" {
+  name        = "example_server_sg"
+  description = "Security group for example server"
   vpc_id      = var.vpc_id
 
   # HTTP (80) from ALB
@@ -68,6 +68,6 @@ resource "aws_security_group" "cagent_server_sg" {
   }
 
   tags = {
-    Name = "cagent_server_sg"
+    Name = "example_server_sg"
   }
 }

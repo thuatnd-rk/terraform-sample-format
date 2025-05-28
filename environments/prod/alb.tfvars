@@ -19,14 +19,14 @@ alb_config = {
       certificate_arn = "arn:aws:acm:us-west-2:187091248012:certificate/f4bfe7c7-2a86-46fc-8d02-728435c793ff"
       forward = {
         type = "forward"
-        target_group_key = "cagent"
+        target_group_key = "example"
       }
       rules = {
         s3-explorer = {
           priority = 1
           conditions = [{
             host_header = {
-              values = ["s3-explorer.vib-domain"]
+              values = ["s3-explorer.user-domain"]
             }
           }]
           actions = [{
@@ -34,16 +34,16 @@ alb_config = {
             target_group_key = "s3-explorer"
           }]
         }
-        cagent = {
+        example = {
           priority = 2
           conditions = [{
             host_header = {
-              values = ["cagent.vib-domain"]
+              values = ["example.user-domain"]
             }
           }]
           actions = [{
             type = "forward"
-            target_group_key = "cagent"
+            target_group_key = "example"
           }]
         }
       }
@@ -73,7 +73,7 @@ alb_config = {
         enabled         = false
       }
     }
-    cagent = {
+    example = {
       name_prefix      = "cagt"
       protocol         = "HTTP"
       port             = 3000
